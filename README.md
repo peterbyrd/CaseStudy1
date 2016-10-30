@@ -8,7 +8,7 @@ Finally, we will perform an analysis on the merged dataset.  This analysis will 
 
 The raw, uncleanded, data used for analysis is in the 'Data' folder.
 
-The scatterplot from our analysis is in the 'GDP_Analysis' folder.
+The scatterplot from our analysis is in the 'GDP_Analysis_files' folder.
 
 Other files in the project directory include:
 
