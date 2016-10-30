@@ -1,4 +1,5 @@
 ## Author: Peter Byrd
+## Load the data
 
 ## Set the working directory and load packages
 setwd("/Users/pbyrd/Git/CaseStudy1")
@@ -9,57 +10,3 @@ library(ggplot2)
 ## Read CSV input file
 gdp <- read.csv("Data/getdata_data_GDP.csv", skip=4,header=TRUE)
 edu <- read.csv("Data/getdata_data_EDSTATS_Country.csv", header=TRUE)
-
-## Create a subset of the gdp data with only the columns we want
-gdp_new <- gdp
-gdp_new <- gdp_new[,-c(3,6,7,8,9,10)]    # remove columns with no data
-
-## Create a subset of the edu data with only the columns we want
-edu_new <- edu
-edu_new <- edu_new[,c(1,3)]              # keep only the columns we need for our analysis
-
-## Rename variables
-gdp_new <- plyr::rename(x=gdp_new,
-                        replace = c("X"="countrycode","X.1"="gdprank","X.3"="countryname",
-                                    "X.4"="gdp"))
-edu_new <- plyr::rename(x=edu_new,
-                        replace = c("CountryCode"="countrycode","Income.Group"="incomegroup"))
-
-## Modify variable types
-gdp_new$gdp <- as.numeric(gsub("[^[:digit:]]","",gdp_new$gdp))
-gdp_new$gdprank <- as.numeric(gsub("[^[:digit:]]","",gdp_new$gdprank))
-
-## Merge the data by country shortname
-gdp_combined <- merge(gdp_new,edu_new, by="countrycode",all=TRUE)
-
-## Remove missing values and unwanted data from merged data
-temp1 <- dim(gdp_combined)
-gdp_combined <- subset(x=gdp_combined,!is.na(gdp)) #remove observations without GDP data
-gdp_combined <- subset(x=gdp_combined,!is.na(gdprank) & !is.na(incomegroup)) #remove observations not in ranking
-temp2 <- dim(gdp_combined)
-deletedvalues <- temp1[1]-temp2[1]
-deletedvalues                           # shows the number of NA observations that were deleted
-
-## Check the data
-head(gdp_combined)
-str(gdp_combined)
-summary(gdp_combined)
-
-## (1) How many of the IDs matched
-match=dim(gdp_combined)
-match[1]                                 # shows the number of IDs that matched
-
-## (2) Sort the data in ascending order by gdp; what is the 13th country?
-gdp_combined <- gdp_combined[order(gdp_combined$gdp),]
-gdp_combined[13,]
-
-## (3) Average GDP rankings for High Income:OECD and High Income:nonOECD groups?
-mean(gdp_combined$gdprank[gdp_combined$incomegroup=="High income: OECD"])
-mean(gdp_combined$gdprank[gdp_combined$incomegroup=="High income: nonOECD"])
-
-## (4) Plot the data using ggplot
-ggplot(gdp_combined,aes(gdp_combined$countrycode,gdp_combined$gdp))+geom_point(aes(col=incomegroup))+xlab("\n Country")+ylab("Gross Domestic Product ($M)\n")+theme_light()
-
-# (5) Cut the GDP ranking into five groups and make a table of income group vs gdprank
-gdp_combined$gdpgroup<-cut(gdp_combined$gdprank,breaks=c(-0.5,38.5,76.5,114.5,152.5,190.5),labels=c("High GDP","Med-High GDP","Medium GDP","Med-Low GDP","Low GDP"))
-table(gdp_combined$gdpgroup,gdp_combined$incomegroup)
