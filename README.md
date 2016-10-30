@@ -6,9 +6,9 @@ Next we will need to clean the datasets using CleanData.R prior to merging them 
 
 Finally, we will perform an analysis on the merged dataset.  This analysis will sort the data by GDP rank and extract datapoints from the dataset.  We will also compare average GDP rank for different income levels.  The data will be displayed in a scatterplot of Country and GDP, and also coded by Income level to show the relationship between GDP and income levels.  We will also segment the GDP rank into five groups and compare that to income level in a tabular format.  
 
-The raw, uncleanded, data used for analysis is in the DATA folder.
+The raw, uncleanded, data used for analysis is in the 'Data' folder.
 
-The scatterplot from our analysis is in the Analysis folder.
+The scatterplot from our analysis is in the 'GDP_Analysis' folder.
 
 Other files in the project directory include:
 
