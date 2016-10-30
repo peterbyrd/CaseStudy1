@@ -6,13 +6,21 @@ source ("LoadData.R")
 source ("CleanData.R")
 source ("AnalyzeData.R")
 
-deletedvalues       # shows the number of observations with NA that were deleted
+# Show the number of observations with NA that were deleted
+deletedvalues
 
-match[1]            # shows the number of country IDs that matched between the two datasets
+# (1) Show the number of country IDs that matched between the two datasets
+match[1]  
 
-gdp_combined[13,]   # shows the 13th country in the list of ascending sorted GDP rank
+# (2) Show the 13th country in the list of ascending sorted GDP rank
+gdp_combined[13,] 
 
-avgrank_oecd                # shows the average GDP rank of High Income: OECD countries
-avgrank_noecd               # shows the average GDP rank of High Income: non OECD countries
+# (3) Show the average GDP rank of High Income: OECD and nonOECD countries
+avgrank_oecd      # High Income: OECD countries
+avgrank_noecd     # High Income: non OECD countries
 
-table(gdp_combined$gdpgroup,gdp_combined$incomegroup)  # table of GDP group by Income Group
+# (4) Plot the data using ggplot
+ggplot(gdp_combined,aes(gdp_combined$countrycode,gdp_combined$gdp))+geom_point(aes(col=incomegroup))+xlab("\n Country")+ylab("Gross Domestic Product ($M)\n")+theme_light()
+
+# (5) Create a table of GDP group by Income Group
+table(gdp_combined$gdpgroup,gdp_combined$incomegroup)

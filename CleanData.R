@@ -20,7 +20,7 @@ edu_new <- plyr::rename(x=edu_new,
 gdp_new$gdp <- as.numeric(gsub("[^[:digit:]]","",gdp_new$gdp))
 gdp_new$gdprank <- as.numeric(gsub("[^[:digit:]]","",gdp_new$gdprank))
 
-## Merge the data by country shortname
+## Merge the data by country shortcode
 gdp_combined <- merge(gdp_new,edu_new, by="countrycode",all=TRUE)
 
 ## Remove missing values and unwanted data from merged data
@@ -29,6 +29,7 @@ gdp_combined <- subset(x=gdp_combined,!is.na(gdp)) #remove observations without 
 gdp_combined <- subset(x=gdp_combined,!is.na(gdprank) & !is.na(incomegroup)) #remove observations not in ranking
 temp2 <- dim(gdp_combined)
 deletedvalues <- temp1[1]-temp2[1]
+deletedvalues    # this is the number of observations with NA that were deleted
 
 ## Check the final clean data
 # head(gdp_combined)
