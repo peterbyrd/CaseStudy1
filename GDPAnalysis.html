@@ -125,7 +125,7 @@ $(document).ready(function () {
 
 <div id="analysis-of-gdp-rankings-by-country" class="section level1">
 <h1>Analysis of GDP rankings by country</h1>
-<p>The analysis below pulls data from multiple data sources related to gross domestic product and income categories by country. The data is merged and cleaned before proceeding to analysis.</p>
+<p>The analysis below pulls data from multiple data sources related to gross domestic product and income categories by country. The data is merged and cleaned before proceeding to analysis. In the analysis, will sort on GDP rank and determine average GDP rank by income categories. We will also compare GDP rank and Income levels and plot the data in a scatter plot.</p>
 <div id="load-data" class="section level2">
 <h2>Load data</h2>
 <p>First we must load the appropriate data from our data sources.</p>
@@ -184,6 +184,7 @@ temp2 &lt;- dim(gdp_combined)
 deletedvalues &lt;- temp1[1]-temp2[1]
 deletedvalues    # this is the number of observations with NA that were deleted</code></pre>
 <pre><code>## [1] 147</code></pre>
+<p>We see from the ‘deletedvalues’ that we have deleted 147 observations from the cleaned data.</p>
 </div>
 <div id="analyze-the-data" class="section level2">
 <h2>Analyze the data</h2>
@@ -252,7 +253,7 @@ table(gdp_combined$gdpgroup,gdp_combined$incomegroup)</code></pre>
 </div>
 <div id="conclusion" class="section level2">
 <h2>Conclusion</h2>
-<p>From the analysis, it appears that GDP level is related to Income level within the country. Although we see some outliers, there appears to be a positve relationship with GDP and Income level.</p>
+<p>From the analysis, it appears that GDP level is related to Income level within the country. Although we see some outliers, there appears to be a positve relationship with GDP and Income level. Further regression analysis could be performed on GDP and Income level to better quantify the relationship.</p>
 </div>
 </div>
 

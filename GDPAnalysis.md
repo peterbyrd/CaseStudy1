@@ -4,7 +4,7 @@ October 30, 2016
 
 # Analysis of GDP rankings by country
 
-The analysis below pulls data from multiple data sources related to gross domestic product and income categories by country.  The data is merged and cleaned before proceeding to analysis.
+The analysis below pulls data from multiple data sources related to gross domestic product and income categories by country.  The data is merged and cleaned before proceeding to analysis.  In the analysis, will sort on GDP rank and determine average GDP rank by income categories.  We will also compare GDP rank and Income levels and plot the data in a scatter plot.  
 
 ## Load data
 First we must load the appropriate data from our data sources.
@@ -89,6 +89,8 @@ deletedvalues    # this is the number of observations with NA that were deleted
 ```
 ## [1] 147
 ```
+
+We see from the 'deletedvalues' that we have deleted 147 observations from the cleaned data.
 
 ## Analyze the data
 
@@ -202,4 +204,4 @@ From the table we can see that are 5 countries that are Lower Middle Income but 
 
 ## Conclusion
 
-From the analysis, it appears that GDP level is related to Income level within the country.  Although we see some outliers, there appears to be a positve relationship with GDP and Income level.  
+From the analysis, it appears that GDP level is related to Income level within the country.  Although we see some outliers, there appears to be a positve relationship with GDP and Income level.  Further regression analysis could be performed on GDP and Income level to better quantify the relationship.  
