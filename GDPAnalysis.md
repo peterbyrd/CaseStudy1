@@ -4,6 +4,8 @@ October 30, 2016
 
 # Analysis of GDP rankings by country
 
+## Introduction
+
 The analysis below pulls data from multiple data sources related to gross domestic product and income categories by country.  The data is merged and cleaned before proceeding to analysis.  In the analysis, will sort on GDP rank and determine average GDP rank by income categories.  We will also compare GDP rank and Income levels and plot the data in a scatter plot.  
 
 ## Load data
